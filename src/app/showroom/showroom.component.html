@@ -1,0 +1,29 @@
+<section class="bg-dark">
+    <div class="container text-light">
+        <div class="row text-center py-5">
+            <h1>{{ title }}</h1>
+            <p>Choisit ta catégories de véhicules favorite</p>
+        </div>
+    </div>
+
+    <div class="container  bg-dark" *ngIf="!showCars">
+        <div class="row align-items-sm-start py-5  rounded">
+            <div class="col-6 col-sm-4 mb-4   " *ngFor="let class of categories">
+                <div
+                    class="card-body rounded mb-2 py-4 text-light bg-sombre text-center d-flex justify-content-sm-center align-items-center flex-column">
+                    <h2>{{class}}</h2>
+                    <a (click)="displayVehicles(class)" class="btn btn-primary">Découvrir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div *ngIf="showCars">
+    <ul>
+        <li *ngFor="let key of Object.keys(car)">
+            <p>{{ key }} </p>
+        </li>
+    </ul>
+</div>

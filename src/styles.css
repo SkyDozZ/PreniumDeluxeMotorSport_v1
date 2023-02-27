@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+@import "node_modules/bootstrap/dist/css/bootstrap.css";
+
+.bg-sombre{
+    background-color: #2e3440;
+}
+
+.bg-clair{
+    background-color:#4c566a;
+}
