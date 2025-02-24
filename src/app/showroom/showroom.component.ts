@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { CarsService } from '../service/cars.service';
+import { Car } from '../service/car';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class ShowroomComponent implements OnInit, OnDestroy {
 
   title!: string;
 
-  car = {};
+  cars: Record<string, Car> = {};
   categories: String[] = [];
   Object = Object;
   showCars = false;
@@ -30,14 +31,14 @@ export class ShowroomComponent implements OnInit, OnDestroy {
     });   
   }
   
-  displayVehicles(category: String){
+  displayVehicles(category: String) {
     this.subscription = this.service.getVehiclesByClass(category).subscribe((data) => {
-      this.car = data;
+      this.cars = data as Record<string, Car>;
       console.log(data);
       this.showCars = true;
     });
   }
-
+  
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
