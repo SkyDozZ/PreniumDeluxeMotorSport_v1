@@ -17,13 +17,24 @@
             </div>
         </div>
     </div>
+    
 </section>
 
 
-<div *ngIf="showCars">
-    <ul>
-        <li *ngFor="let key of Object.keys(car)">
-            <p>{{ key }} </p>
-        </li>
-    </ul>
+<div *ngIf="showCars" class="bg-dark">
+  <div class="container">
+    <button (click)="showCars = false" class="btn btn-secondary mb-3">Retour aux catégories</button>
+    <div class="row">
+      <div class="col-md-4 col-sm-6 col-12 mb-3" *ngFor="let item of cars | keyvalue">
+        <div class="card text-center bg-dark text-light border-0">
+          <div class="card-body rounded mb-2 py-4 text-light bg-sombre text-center d-flex justify-content-sm-center align-items-center flex-column">
+            <h1>{{ item.value.model }}</h1>
+            <img [src]="item.value.images.frontQuarter" alt="{{ item.value.model }}" class="img-fluid" />
+            <h4> Fabricant : {{ item.value.manufacturer }}</h4>
+            <h4> Vitesse : {{ item.value.acceleration }} Km.h</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
